@@ -7,6 +7,7 @@ package com.mycompany.ipdetectweb;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.InetAddress;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import javax.servlet.RequestDispatcher;
@@ -39,8 +40,9 @@ import javax.servlet.http.HttpServletResponse;
 
       
         System.out.println("IP do Cliente: " + clientIPAddress);
-        Date horario = new Date();
-        System.out.println("Hora da Conexão: " + horario);
+        Date horarioF = new Date();
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String horario= formato.format(horarioF);
 
        
         request.setAttribute("serverIPAddress", serverIPAddress);
