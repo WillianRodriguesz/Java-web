@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8">
@@ -108,68 +109,66 @@
             </form>
         </div>
 
-        <c:if test="${not empty alunos}">
-            <div id="tabela">
-                <c:choose>
-                    <c:when test="${escolha eq 'aluno'}">
-                        <h2>Lista de Alunos</h2>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Matrícula</th>
-                                    <th>Nome</th>
-                                    <th>Email</th>
-                                    <th>Telefone</th>
-                                    <th>Idade</th>
-                                    <th>Data de Nascimento</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <c:forEach var="item" items="${alunos}">
-                                    <tr>
-                                        <td>${item.matricula}</td>
-                                        <td>${item.nome}</td>
-                                        <td>${item.email}</td>
-                                        <td>${item.telefone}</td>
-                                        <td>${item.idade}</td>
-                                        <td>${item.dtNascimento}</td>
-                                    </tr>
-                                </c:forEach>
-                            </tbody>
-                        </table>
-                    </c:when>
-                    <c:when test="${escolha eq 'funcionario'}">
-                        <h2>Lista de Funcionários</h2>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Código</th>
-                                    <th>Nome</th>
-                                    <th>Cargo</th>
-                                    <th>Data de Contratação</th>
-                                    <th>Código do Gerente</th>
-                                    <th>Salário</th>
-                                    <th>Código do Departamento</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <c:forEach var="item" items="${funcionarios}">
-                                    <tr>
-                                        <td>${item.cod}</td>
-                                        <td>${item.nome}</td>
-                                        <td>${item.cargo}</td>
-                                        <td>${item.dtContratacao}</td>
-                                        <td>${item.codGerente}</td>
-                                        <td>${item.salario}</td>
-                                        <td>${item.codDepartamento}</td>
-                                    </tr>
-                                </c:forEach>
-                            </tbody>
-                        </table>
-                    </c:when>
-                </c:choose>
-            </div>
-        </c:if>
+        <div id="tabela">
+    <c:choose>
+        <c:when test="${escolha eq 'aluno'}">
+            <h2>Lista de Alunos</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Matrícula</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Telefone</th>
+                        <th>Idade</th>
+                        <th>Data de Nascimento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:forEach var="item" items="${alunos}">
+                        <tr>
+                            <td>${item.matricula}</td>
+                            <td>${item.nome}</td>
+                            <td>${item.email}</td>
+                            <td>${item.telefone}</td>
+                            <td>${item.idade}</td>
+                            <td>${item.dtNascimento}</td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+        </c:when>
+        <c:when test="${escolha eq 'funcionario'}">
+            <h2>Lista de Funcionários</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nome</th>
+                        <th>Cargo</th>
+                        <th>Data de Contratação</th>
+                        <th>Código do Gerente</th>
+                        <th>Salário</th>
+                        <th>Código do Departamento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:forEach var="item" items="${funcionarios}">
+                        <tr>
+                            <td>${item.cod}</td>
+                            <td>${item.nome}</td>
+                            <td>${item.cargo}</td>
+                            <td>${item.dtContratacao}</td>
+                            <td>${item.gerente}</td>
+                            <td>${item.salario}</td>
+                            <td>${item.departamento}</td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+        </c:when>
+    </c:choose>
+</div>
 
 
     </body>
