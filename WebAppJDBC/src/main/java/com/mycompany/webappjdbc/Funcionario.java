@@ -14,9 +14,9 @@ public class Funcionario {
     private String nome;
     private String cargo;
     private Date dtContratacao;
-    private String gerente;
+    private int gerente;
     private BigDecimal salario;
-    private String departamento;
+    private int departamento;
 
     public Funcionario() {
     }
@@ -41,11 +41,11 @@ public class Funcionario {
         this.cod = cod;
     }
 
-    public String getDepartamento() {
+    public int getDepartamento() {
         return departamento;
     }
 
-    public void setDepartamento(String departamento) {
+    public void setDepartamento(int departamento) {
         this.departamento = departamento;
     }
 
@@ -57,11 +57,11 @@ public class Funcionario {
         this.dtContratacao = dtContratacao;
     }
 
-    public String getGerente() {
+    public int getGerente() {
         return gerente;
     }
 
-    public void setGerente(String gerente) {
+    public void setGerente(int gerente) {
         this.gerente = gerente;
     }
 

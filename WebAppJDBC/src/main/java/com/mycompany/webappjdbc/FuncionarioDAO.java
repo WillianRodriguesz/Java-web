@@ -19,7 +19,7 @@ public class FuncionarioDAO {
     public List<Funcionario> listaTodos() throws SQLException {
 
         ArrayList<Funcionario> lista = new ArrayList<Funcionario>();
-        String sql = "select cod, nome, cargo, dtcontratação, codgerente, salario, coddepartamento  from funcionario order by nome";
+        String sql = "select cod, nome, cargo, dtcontratacao, codgerente, salario, coddepartamento from funcionario order by nome";
 
         Statement st = this.conexao.createStatement();
         ResultSet rs = st.executeQuery(sql);
@@ -28,10 +28,10 @@ public class FuncionarioDAO {
             func.setCod(rs.getInt("cod"));
             func.setNome(rs.getString("nome"));
             func.setCargo(rs.getString("cargo"));
-            func.setDtContratacao(rs.getDate("dtcontração"));
-            func.setGerente(rs.getString("codgerente"));
+            func.setDtContratacao(rs.getDate("dtcontratacao"));
+            func.setGerente(rs.getInt("codgerente"));
             func.setSalario(rs.getBigDecimal("salario"));
-            func.setDepartamento(rs.getString("coddepartamento"));
+            func.setDepartamento(rs.getInt("coddepartamento"));
             
             lista.add(func);
         }

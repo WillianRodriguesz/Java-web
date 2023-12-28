@@ -42,6 +42,7 @@ public class AppServlet extends HttpServlet {
                 dispatcher.forward(request, response);
 
             } catch (SQLException e) {
+                e.printStackTrace();
             } finally {
                 if (conexao != null) {
                     try {
