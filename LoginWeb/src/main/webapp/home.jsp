@@ -1,8 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Login Bem-Sucedido</title>
+    <title>Página de Início</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,6 +14,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            color: #fff;
         }
 
         .container {
@@ -30,12 +32,28 @@
         p {
             color: #fff; /* branco */
         }
+
+        /* Adicione estilos para o botão de logout */
+        #logoutBtn {
+            background-color: #800080; /* Cor de fundo roxa */
+            color: #fff; /* Cor do texto branco */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Login Bem-Sucedido</h1>
-        <p>O usu�rio foi logado com sucesso.</p>
+        <h1>Bem-vindo à Página Inicial</h1>
+        <p>Esta é a página inicial do seu aplicativo.</p>
+        
+        <!-- Adicione o botão de logout -->
+        <form action="LoginServlet" method="post">
+            <input type="hidden" name="action" value="logout">
+            <button id="logoutBtn" type="submit">Logout</button>
+        </form>
     </div>
 </body>
 </html>

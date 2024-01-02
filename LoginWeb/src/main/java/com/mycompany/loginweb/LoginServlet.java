@@ -8,13 +8,13 @@ import java.sql.SQLException;
 import java.util.UUID;
 import javax.sql.DataSource;
 import javax.annotation.Resource;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * @author willian
@@ -42,21 +42,44 @@ public class LoginServlet extends HttpServlet {
 
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        String action = request.getParameter("action");
 
-        if (validaUser(username, password)) {
-            String userID = UUID.randomUUID().toString();
-            Cookie userCookie = new Cookie("userId", userID);
-            userCookie.setMaxAge(10 * 60);
+        if (action.equals("logout") ) {
 
-            response.addCookie(userCookie);
-            response.sendRedirect("home.jsp");
+            HttpSession session = request.getSession(false);
+
+            if (session != null) {
+                session.invalidate();
+            }
+
+            Cookie[] cookies = request.getCookies();
+            if (cookies != null) {
+                for (Cookie cookie : cookies) {
+                    if ("userId".equals(cookie.getName())) {
+                        cookie.setMaxAge(0);
+                        response.addCookie(cookie);
+                        break;
+                    }
+                }
+            }
+
+            response.sendRedirect("index.jsp");
         } else {
-            
-            request.setAttribute("error", "true");
-            request.removeAttribute("javax.servlet.error.status_code");
+            String userId = getCookieValue(request.getCookies(), "userId");
 
-            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-            dispatcher.forward(request, response);
+            if (userId == null || isCookieExpired(request.getCookies(), "userId")) {
+                if (validaUser(username, password)) {
+                    String userID = UUID.randomUUID().toString();
+                    Cookie userCookie = new Cookie("userId", userID);
+                    userCookie.setMaxAge(10);
+
+                    response.addCookie(userCookie);
+                    response.sendRedirect("home.jsp"); 
+                } else {
+                    request.setAttribute("error", "true");
+                    request.removeAttribute("javax.servlet.error.status_code");
+                }
+            }
         }
 
     }
@@ -107,6 +130,18 @@ public class LoginServlet extends HttpServlet {
             }
         }
         return null;
+    }
+
+    private boolean isCookieExpired(Cookie[] cookies, String cookieName) {
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookieName.equals(cookie.getName()) && cookie.getMaxAge() == 0) {
+                    // O cookie está presente, mas expirou
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
 }
