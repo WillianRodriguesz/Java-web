@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- *
  * @author willian
  */
 @WebFilter(filterName = "LoginFilter", urlPatterns = {"/*"})

@@ -1,0 +1,73 @@
+/* WebContent/Styles/style.css */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column; /* Adiciona uma orientação de coluna para centralizar verticalmente */
+}
+
+.container {
+    text-align: center;
+}
+
+h1 {
+    color: #007BFF;
+    margin-bottom: 20px; /* Adiciona um espaçamento inferior */
+}
+
+form {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    margin-top: 20px; /* Adiciona um espaçamento superior */
+}
+
+form input[type="text"],
+form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+form input[type="submit"] {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.btn-carrinho {
+    display: inline-block;
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    position: relative;
+}
+
+.btn-carrinho:hover {
+    background-color: #218838;
+}
+
+.btn-carrinho::before {
+    content: "\f07a"; /* Código do ícone do carrinho da Font Awesome */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    font-size: 18px;
+    margin-right: 8px;
+}
