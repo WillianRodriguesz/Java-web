@@ -42,48 +42,25 @@ public class LoginServlet extends HttpServlet {
 
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        String action = request.getParameter("action");
 
-        if (action.equals("logout") ) {
+        String userId = getCookieValue(request.getCookies(), "userId");
 
-            HttpSession session = request.getSession(false);
+        if (userId == null || isCookieExpired(request.getCookies(), "userId")) {
+            if (validaUser(username, password)) {
+                String userID = UUID.randomUUID().toString();
+                Cookie userCookie = new Cookie("userId", userID);
+                userCookie.setMaxAge(600);
 
-            if (session != null) {
-                session.invalidate();
-            }
-
-            Cookie[] cookies = request.getCookies();
-            if (cookies != null) {
-                for (Cookie cookie : cookies) {
-                    if ("userId".equals(cookie.getName())) {
-                        cookie.setMaxAge(0);
-                        response.addCookie(cookie);
-                        break;
-                    }
-                }
-            }
-
-            response.sendRedirect("index.jsp");
-        } else {
-            String userId = getCookieValue(request.getCookies(), "userId");
-
-            if (userId == null || isCookieExpired(request.getCookies(), "userId")) {
-                if (validaUser(username, password)) {
-                    String userID = UUID.randomUUID().toString();
-                    Cookie userCookie = new Cookie("userId", userID);
-                    userCookie.setMaxAge(10);
-
-                    response.addCookie(userCookie);
-                    response.sendRedirect("home.jsp"); 
-                } else {
-                    request.setAttribute("error", "true");
-                    request.removeAttribute("javax.servlet.error.status_code");
-                }
+                response.addCookie(userCookie);
+                response.sendRedirect("home.jsp");
+            } else {
+                request.setAttribute("error", "true");
+                request.removeAttribute("javax.servlet.error.status_code");
             }
         }
-
     }
 
+    //}
     private boolean validaUser(String user, String password) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
