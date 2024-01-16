@@ -56,18 +56,17 @@ public class FuncionarioServlet extends HttpServlet {
     private List<String> consulta(String nome) throws SQLException {
         List<String> resultados = new ArrayList<String>();
 
-            String sql = "SELECT nome FROM funcionario WHERE nome LIKE ?";
-            PreparedStatement statement = dataSource.getConnection().prepareStatement(sql);
-            statement.setString(1, "%" + nome + "%");
-            ResultSet resultSet = statement.executeQuery();
+        String sql = "SELECT nome FROM funcionario WHERE nome LIKE ?";
+        PreparedStatement statement = dataSource.getConnection().prepareStatement(sql);
+        statement.setString(1, "%" + nome + "%");
+        ResultSet resultSet = statement.executeQuery();
 
-            while (resultSet.next()) {
-                resultados.add(resultSet.getString("nome"));
-            }
-            
-            resultSet.close();
-            statement.close();
-        
+        while (resultSet.next()) {
+            resultados.add(resultSet.getString("nome"));
+        }
+
+        resultSet.close();
+        statement.close();
 
         return resultados;
     }
