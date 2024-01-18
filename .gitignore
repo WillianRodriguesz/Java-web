@@ -4,3 +4,12 @@
 /Ecomerce/target/
 /ConsultaFuncionario/target/
 /AppWebJPA/target/
+/WebJPA/target/
+/JPA/SwingJPA/build/
+/JPA/SwingJPA/dist/
+/JPA/EnterpriseJPA/EnterpriseJPA-ejb/build/
+/JPA/EnterpriseJPA/EnterpriseJPA-ejb/dist/
+/JPA/EnterpriseJPA/EnterpriseJPA-war/build/
+/JPA/EnterpriseJPA/build/
+/JPA/EnterpriseJPA/EnterpriseJPA-war/dist/
+/JPA/nbproject/private/

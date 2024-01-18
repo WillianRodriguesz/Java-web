@@ -1,6 +1,5 @@
 
 package com.mycompany.entity;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -42,6 +41,17 @@ public class Usuario {
         this.senha = senha;
     }
     
+    public boolean validaSenha(String senha) {
+        boolean ret = false;
+        try {
+            if (this.senha.equals(senha)) {
+                ret = true;
+            }
+        } catch (NullPointerException ex) {
+        }
+        return ret;
+    }
+
     @Override
     public String toString() {
         return super.toString();
