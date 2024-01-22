@@ -3,7 +3,7 @@ package br.tche.ucpel.tads.doo2.ejb;
 import br.tche.ucpel.tads.doo2.persisty.Departamento;
 import br.tche.ucpel.tads.doo2.persisty.Funcionario;
 import br.tche.ucpel.tads.doo2.persisty.Pessoa;
-import br.tche.ucpel.tads.doo2.persisty.Aluno;
+import br.tche.ucpel.tads.doo2.persisty.Disciplina;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -30,7 +30,7 @@ public class JPAQueries implements JPAQueriesRemote {
     public void popula() {
         try {
             Departamento dept = new Departamento();
-            dept.setDescricao("RH");
+            dept.setDescricao("Desenvolvimento");
             em.persist(dept);
             
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -38,32 +38,44 @@ public class JPAQueries implements JPAQueriesRemote {
             Funcionario func = new Funcionario();
             func.setDepartamento(dept);
             func.setDtContratacao(new Date());
-            func.setDtNascimento(sdf.parse("23/09/1970"));
-            func.setNome("João");
-            func.setSalario(1000.0);
-            func.setCpf("12142");
+                
+            func.setSalario(1200.0);
+            
+            func.setDtNascimento(sdf.parse("23/02/1999"));
+            func.setNome("Willian");
+            func.setCpf("122342");
             em.persist(func);
             
             func = new Funcionario();
             func.setDepartamento(dept);
             func.setDtContratacao(new Date());
             func.setDtNascimento(sdf.parse("23/09/1982"));
-            func.setNome("Maria");
+            func.setNome("Marcos");
             func.setSalario(3000.0);
-            func.setCpf("45445");
+            func.setCpf("45421345");
             em.persist(func);
         } catch (ParseException ex) {
             Logger.getLogger(JPAQueries.class.getName()).log(Level.SEVERE, "Provavelmente Data Inválida", ex);
         }
-
+    
+        //addDisciplina(280, "Programação Orientada a Objetos");
+        //addDisciplina(140, "Estrutura de Dados");
     }
     
-    public void addAluno(){
+    public void addDisciplina(int cargaHoraria, String descricao){
         try {
+            Disciplina disc = new Disciplina();
+            disc.setCargaHoraria(cargaHoraria);
+            disc.setDescricao(descricao);
+            em.persist(disc);
             
         } catch (Exception e) {
         }
             
+    }
+    
+    public void addAluno(){
+        
     }
 
     @Override
