@@ -9,7 +9,7 @@
         <title>Lista Pessoas</title>
     </head>
     <body style="color: darkcyan">
-        <form action="/AppQueryJPA-war/jpaquerycontrol" method="post">
+         <form action="/AppQueryJPA-war/jpaquerycontrol?opcao=LISTAPESSOAPARTE" method="post">
             Pesquisar por Nome: <input type="text" name="nomePesquisa">
             <input type="submit" value="Pesquisar">
         </form>

@@ -31,6 +31,7 @@ public class ControllerQueryJPA extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher dispatcher = null;
         String opc = req.getParameter("opcao");
+
         // ADICIONAR O RETORNO PARA N CAIR NO NULL //
         if (opc == null) {
             dispatcher = req.getRequestDispatcher("index.jsp");
@@ -48,19 +49,24 @@ public class ControllerQueryJPA extends HttpServlet {
                         dispatcher = req.getRequestDispatcher("listaDepartamentos.jsp");
                         break;
                     case LISTAPESSOAPARTE:
-                        dispatcher = req.getRequestDispatcher("listaPessoas.jsp");
-                        dispatcher.forward(req, resp);
-
                         String nomePesquisa = req.getParameter("nomePesquisa");
-                        List<Pessoa> lstPessoas = ejbQueries.findPessoasPorNome("%" + nomePesquisa + "%");
 
-                        if (lstPessoas.isEmpty()) {
-                            req.setAttribute("mensagem", "Nenhuma pessoa encontrada com o nome: " + nomePesquisa);
+                        if (nomePesquisa == null) {
+                            dispatcher = req.getRequestDispatcher("listaPessoas.jsp");
+                            dispatcher.forward(req, resp);
+                        } else {
+                            List<Pessoa> lstPessoas = ejbQueries.findPessoasPorNome("%" + nomePesquisa + "%");
+
+                            if (lstPessoas.isEmpty()) {
+                                req.setAttribute("mensagem", "Nenhuma pessoa encontrada com o nome: " + nomePesquisa);
+                            } else {
+                                req.setAttribute("lstPessoas", lstPessoas);
+                            }
+                            dispatcher = req.getRequestDispatcher("listaPessoas.jsp");
+                            dispatcher.forward(req, resp);
                         }
-
-                        req.setAttribute("lstPessoas", lstPessoas);
-
                         break;
+
                     case LISTAPESSOACPF:
                         Pessoa pessoa = ejbQueries.findPessoaCPF("45445");
                         List<Pessoa> lstPessoa = new ArrayList<Pessoa>();
