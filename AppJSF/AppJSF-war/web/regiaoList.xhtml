@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <ui:composition template="/WEB-INF/templates/default.xhtml">
+        <ui:define name="content">
+            <h:form id="formulario">
+                <h:outputText value="#{msgs.titRegiaoList}" styleClass="tituloCadastros"/>
+                <h:commandButton styleClass="buttons" value="#{msgs.btNew}" action="regiaoNew"/>
+                <br/>
+                <div class="tabela">
+                    <h:dataTable value="#{regiaoMNG.lista}" var="regiao" styleClass="tablebg" headerClass="cabecalhoTabela"  rowClasses="tabelalinhaimpar,tabelalinhapar">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{msgs.lbRegiaoId}"/>
+                            </f:facet>
+                            <h:outputText value="#{regiao.codigo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{msgs.lbRegiaoPais}"/>
+                            </f:facet>
+                            <h:outputText value="#{regiao.pais}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{msgs.lbRegiaoEstado}"/>
+                            </f:facet>
+                            <h:outputText value="#{regiao.estado}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{msgs.lbRegiaoCidade}"/>
+                            </f:facet>
+                            <h:outputText value="#{regiao.cidade}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="" />
+                            </f:facet>
+                            <h:commandLink immediate="true" value="#{msgs.btRemove}"  actionListener="#{regiaoMNG.remove()}" onclick="if (!confirm('#{msgs.msgConfRemove}')) return false" >
+                                <f:param name="codExcluir" value="#{regiao.codigo}" />
+                            </h:commandLink>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="" />
+                            </f:facet>
+                            <h:commandLink immediate="true" value="#{msgs.btUpdate}"  action="#{regiaoMNG.prepUpdate()}">
+                                <f:param name="codEditar" value="#{regiao.codigo}" />
+                            </h:commandLink>
+                        </h:column>
+                    </h:dataTable>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

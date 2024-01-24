@@ -18,3 +18,12 @@
 /AppQueryJPA/build/
 /AppQueryJPA/AppQueryJPA-war/dist/
 /AppQueryJPA/AppQueryJPA-ejb/dist/
+/AppJSF/nbproject/private/
+/AppJSF/AppJSF-war/nbproject/private/
+/AppJSF/AppJSF-ejb/nbproject/private/
+/AppJSF/dist/
+/AppJSF/build/
+/AppJSF/AppJSF-war/build/
+/AppJSF/AppJSF-war/dist/
+/AppJSF/AppJSF-ejb/build/
+/AppJSF/AppJSF-ejb/dist/

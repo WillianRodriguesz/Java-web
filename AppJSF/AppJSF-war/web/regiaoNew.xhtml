@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <ui:composition template="/WEB-INF/templates/default.xhtml">
+        <ui:define name="content">
+            <h:form id="formulario">
+                <h:outputText value="#{msgs.titRegiaoNew}" styleClass="tituloCadastros"/>
+                <br/>
+                <h:outputLabel styleClass="labels" for="txtPais" value="#{msgs.lbRegiaoPais}"/>
+                <h:inputText id="txtPais" styleClass="inputs" value="${regiaoMNG.pais}" />
+                <h:message for="txtPais" styleClass="error"/>
+                <br/>
+                <h:outputLabel styleClass="labels" for="txtEstado" value="#{msgs.lbRegiaoEstado}"/>
+                <h:inputText id="txtEstado" styleClass="inputs" value="${regiaoMNG.estado}" />
+                <h:message for="txtEstado" styleClass="error"/>
+                <br/>
+                <h:outputLabel styleClass="labels" for="txtCidade" value="#{msgs.lbRegiaoCidade}"/>
+                <h:inputText id="txtCidade" styleClass="inputs" value="${regiaoMNG.cidade}" />
+                <h:message for="txtCidade" styleClass="error"/>
+                <br/>
+                <h:commandButton styleClass="buttons" value="#{msgs.btClear}">
+                    <f:ajax render="@form" listener="#{regiaoMNG.clear}"/>
+                </h:commandButton>
+                <h:commandButton styleClass="buttons" value="#{msgs.btSave}" action="#{regiaoMNG.save}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
