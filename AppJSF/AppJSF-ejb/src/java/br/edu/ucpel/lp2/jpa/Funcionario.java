@@ -37,11 +37,25 @@ public class Funcionario implements Serializable {
     @ManyToOne
     @JoinColumn(name = "CODDEPARTAMENTO", referencedColumnName = "CODIGO")
     private Departamento departamento;
+    
+    @ManyToOne
+    @JoinColumn(name = "CODREGIAO", referencedColumnName = "CODIGO")
+    private Regiao regiao;
 
     public Long getCodigo() {
         return codigo;
     }
 
+    public Regiao getRegiao() {
+        return regiao;
+    }
+
+    public void setRegiao(Regiao regiao) {
+        this.regiao = regiao;
+    }
+    
+    
+    
     public void setCodigo(Long codigo) {
         this.codigo = codigo;
     }

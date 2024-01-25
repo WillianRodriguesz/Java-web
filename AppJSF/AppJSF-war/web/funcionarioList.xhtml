@@ -32,6 +32,30 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">
+                                <h:outputText value="#{msgs.lbCmbRegiao}"/>
+                            </f:facet>
+                            <h:outputText value="#{func.regiao.descricao}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{msgs.lbFuncDtContratacao}"/>
+                            </f:facet>
+                            <h:outputText value="#{func.dtContratacao}">
+                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{msgs.lbFuncSalario}"/>
+                            </f:facet>
+                            <h:outputText value="#{func.salario}">
+                                <f:convertNumber currencyCode="BRL" type="currency"/>
+                            </h:outputText>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">
                                 <h:outputText value=" " />
                             </f:facet>
                             <h:commandLink immediate="true" value="#{msgs.btRemove}"  actionListener="#{funcionarioMNG.remove()}" onclick="if (!confirm('#{msgs.msgConfRemove}')) return false" >
@@ -52,4 +76,3 @@
         </ui:define>
     </ui:composition>
 </html>
-

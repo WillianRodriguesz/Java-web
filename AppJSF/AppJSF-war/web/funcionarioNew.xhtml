@@ -9,22 +9,35 @@
             <h:form id="formulario">
                 <h:outputText value="#{msgs.titFuncNew}" styleClass="tituloCadastros"/>
                 <br/>
-                <h:outputLabel styleClass="labels" for="txtDescricao" value="#{msgs.lbFuncNome}"/>
-                <h:inputText id="txtDescricao" styleClass="inputs" value="${funcionarioMNG.nome}" />
-                <h:message for="txtDescricao" styleClass="error"/>
+                <h:outputLabel styleClass="labels" for="txtNome" value="#{msgs.lbFuncNome}"/>
+                <h:inputText id="txtNome" styleClass="inputs" value="#{funcionarioMNG.nome}" style="display: block;" />
+                <h:message for="txtNome" styleClass="error"/>
                 <br/>
                 <h:outputLabel styleClass="labels" for="cmbDepartamento" value="#{msgs.lbCmbDept}"/>
-                <h:selectOneMenu id="cmbDepartamento" styleClass="combos" converter="departamentoConverter" value="#{funcionarioMNG.departamento}">
-                    <f:selectItems value="#{departamentoMNG.listaSelectItem}" var ="vDept" itemLabel="#{vDept.descricao}"/>
+                <h:selectOneMenu id="cmbDepartamento" styleClass="combos" converter="departamentoConverter" value="#{funcionarioMNG.departamento}" style="display: block;">
+                    <f:selectItems value="#{departamentoMNG.listaSelectItem}" var="vDept" itemLabel="#{vDept.descricao}" />
                 </h:selectOneMenu>
                 <h:message for="cmbDepartamento" styleClass="error"/>
+                <br/>
+                <h:outputLabel styleClass="labels" for="cmbRegiao" value="#{msgs.lbCmbRegiao}"/>
+                <h:selectOneMenu id="cmbRegiao" styleClass="combos" converter="regiaoConverter" value="#{funcionarioMNG.regiao}" style="display: block;">
+                    <f:selectItems value="#{regiaoMNG.listaSelectItem}" var="vRegiao" itemLabel="#{vRegiao.descricao}" />
+                </h:selectOneMenu>
+                <h:message for="cmbRegiao" styleClass="error"/>
+                <br/>
+                <h:outputLabel styleClass="labels" for="txtDtContratacao" value="#{msgs.lbFuncDtContratacao}"/>
+                <h:inputText id="txtDtContratacao" styleClass="inputs" value="#{funcionarioMNG.dtContratacao}" style="display: block;" />
+                <h:message for="txtDtContratacao" styleClass="error"/>
+                <br/>
+                <h:outputLabel styleClass="labels" for="txtSalario" value="#{msgs.lbFuncSalario}"/>
+                <h:inputText id="txtSalario" styleClass="inputs" value="#{funcionarioMNG.salario}" style="display: block;" />
+                <h:message for="txtSalario" styleClass="error"/>
                 <br/>
                 <h:commandButton styleClass="buttons" value="#{msgs.btClear}">
                     <f:ajax render="@form" listener="#{funcionarioMNG.clear}"/>
                 </h:commandButton>
-                <h:commandButton styleClass="buttons" value="Salvar" action="#{funcionarioMNG.save}"/>
+                <h:commandButton styleClass="buttons" value="#{msgs.btSave}" action="#{funcionarioMNG.save}"/>
             </h:form>
         </ui:define>
     </ui:composition>
 </html>
-

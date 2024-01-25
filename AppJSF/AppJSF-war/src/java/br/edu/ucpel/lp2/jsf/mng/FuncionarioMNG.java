@@ -3,6 +3,7 @@ package br.edu.ucpel.lp2.jsf.mng;
 import br.edu.ucpel.lp2.dao.FuncionarioDAOLocal;
 import br.edu.ucpel.lp2.jpa.Departamento;
 import br.edu.ucpel.lp2.jpa.Funcionario;
+import br.edu.ucpel.lp2.jpa.Regiao;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
@@ -13,8 +14,7 @@ import javax.faces.event.AjaxBehaviorEvent;
 import javax.validation.constraints.Pattern;
 
 /**
- *
- * @author mertins
+ * ...
  */
 @Named(value = "funcionarioMNG")
 @RequestScoped
@@ -23,15 +23,13 @@ public class FuncionarioMNG {
     @EJB
     FuncionarioDAOLocal dao;
     private String codigo;
-    @Pattern(regexp = "(.+)", message = "{invalid.funcionario.descricao}")
     private String nome;
     private Date dtContratacao;
     private Double salario;
     private Departamento departamento;
+    private Regiao regiao; 
 
-    /**
-     * Creates a new instance of DepartamentoMNG
-     */
+  
     public FuncionarioMNG() {
     }
 
@@ -75,6 +73,14 @@ public class FuncionarioMNG {
         this.departamento = departamento;
     }
 
+    public Regiao getRegiao() {
+        return regiao;
+    }
+
+    public void setRegiao(Regiao regiao) {
+        this.regiao = regiao;
+    }
+
     public List<Funcionario> getLista() {
         return dao.listaTodos();
     }
@@ -82,6 +88,7 @@ public class FuncionarioMNG {
     public void clear(AjaxBehaviorEvent event) {
         this.codigo = null;
         this.nome = null;
+        this.regiao = null; // Limpar a Regiao
     }
 
     public String save() {
@@ -90,6 +97,7 @@ public class FuncionarioMNG {
         elem.setDtContratacao(new Date());
         elem.setNome(this.nome);
         elem.setSalario(0.0);
+        elem.setRegiao(this.regiao); 
         dao.create(elem);
         return "funcionarioList";
     }
@@ -112,6 +120,7 @@ public class FuncionarioMNG {
         this.salario = elem.getSalario();
         this.dtContratacao = elem.getDtContratacao();
         this.departamento = elem.getDepartamento();
+        this.regiao = elem.getRegiao(); // Definir a Regiao
         return "funcionarioUpdate";
     }
 
@@ -122,6 +131,7 @@ public class FuncionarioMNG {
         elem.setDepartamento(departamento);
         elem.setSalario(salario);
         elem.setDtContratacao(dtContratacao);
+        elem.setRegiao(this.regiao); // Definir a Regiao
         dao.update(elem);
         return "funcionarioList";
     }

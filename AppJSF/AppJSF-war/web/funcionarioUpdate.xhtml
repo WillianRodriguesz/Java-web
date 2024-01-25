@@ -32,6 +32,12 @@
                 </h:selectOneMenu>
                 <h:message for="cmbDepartamento" styleClass="error"/>
                 <br/>
+                <h:outputLabel styleClass="labels" for="cmbRegiao" value="#{msgs.lbCmbRegiao}"/>
+                <h:selectOneMenu id="cmbRegiao" styleClass="combos" converter="regiaoConverter" value="#{funcionarioMNG.regiao}">
+                    <f:selectItems value="#{regiaoMNG.listaSelectItem}" var="vRegiao" itemLabel="#{vRegiao.descricao}"/>
+                </h:selectOneMenu>
+                <h:message for="cmbRegiao" styleClass="error"/>
+                <br/>
                 <h:commandButton styleClass="buttons" value="#{msgs.btClear}">
                     <f:ajax render="@form" listener="#{funcionarioMNG.clear}"/>
                 </h:commandButton>
@@ -40,4 +46,3 @@
         </ui:define>
     </ui:composition>
 </html>
-

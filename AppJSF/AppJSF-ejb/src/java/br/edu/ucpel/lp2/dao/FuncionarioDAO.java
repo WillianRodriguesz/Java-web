@@ -7,9 +7,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
- *
  * @author mertins
  */
+
 @Stateless
 public class FuncionarioDAO implements FuncionarioDAOLocal {
 
