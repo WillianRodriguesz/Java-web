@@ -4,6 +4,7 @@ import br.edu.ucpel.lp2.dao.FuncionarioDAOLocal;
 import br.edu.ucpel.lp2.jpa.Departamento;
 import br.edu.ucpel.lp2.jpa.Funcionario;
 import br.edu.ucpel.lp2.jpa.Regiao;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
@@ -93,10 +94,11 @@ public class FuncionarioMNG {
 
     public String save() {
         Funcionario elem = new Funcionario();
-        elem.setDepartamento(this.departamento);
+        elem.setDepartamento(this.departamento);        
+        //SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         elem.setDtContratacao(new Date());
         elem.setNome(this.nome);
-        elem.setSalario(0.0);
+        elem.setSalario(this.salario);
         elem.setRegiao(this.regiao); 
         dao.create(elem);
         return "funcionarioList";

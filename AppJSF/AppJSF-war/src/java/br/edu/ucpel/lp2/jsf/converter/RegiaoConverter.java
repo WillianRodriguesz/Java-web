@@ -10,7 +10,7 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.ConverterException;
 import javax.faces.convert.FacesConverter;
 
-@FacesConverter(value = "regiaoConverter")
+@FacesConverter(value = "regiaoConverter", forClass = Regiao.class)
 public class RegiaoConverter implements Converter {
 
     @Override

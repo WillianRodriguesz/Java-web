@@ -1,6 +1,7 @@
 package br.edu.ucpel.lp2.jpa;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -59,20 +60,25 @@ public class Regiao implements Serializable {
         this.cidade = cidade;
     }
 
-//    @Override
-//    public boolean equals(Object obj) {
-//        if (obj == null) {
-//            return false;
-//        }
-//        if (getClass() != obj.getClass()) {
-//            return false;
-//        }
-//        final Departamento other = (Departamento) obj;
-//        if (this.codigo != other.codigo && (this.codigo == null || !this.codigo.equals(other.codigo))) {
-//            return false;
-//        }
-//        return true;
-//    }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Regiao other = (Regiao) obj;
+        return Objects.equals(this.codigo, other.codigo);
+    }
+
+    public String getDescricao(){
+        String des = this.pais + "-" + this.estado + "-" + this.cidade;
+        return des;
+    }
 
     @Override
     public int hashCode() {

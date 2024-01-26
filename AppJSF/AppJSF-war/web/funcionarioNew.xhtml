@@ -21,12 +21,13 @@
                 <br/>
                 <h:outputLabel styleClass="labels" for="cmbRegiao" value="#{msgs.lbCmbRegiao}"/>
                 <h:selectOneMenu id="cmbRegiao" styleClass="combos" converter="regiaoConverter" value="#{funcionarioMNG.regiao}" style="display: block;">
-                    <f:selectItems value="#{regiaoMNG.listaSelectItem}" var="vRegiao" itemLabel="#{vRegiao.descricao}" />
+                    <f:selectItems value="#{regiaoMNG.listaSelectItem}" var="vRegiao" itemLabel="#{vRegiao.codigo}" itemValue="#{vRegiao}" />
                 </h:selectOneMenu>
                 <h:message for="cmbRegiao" styleClass="error"/>
                 <br/>
                 <h:outputLabel styleClass="labels" for="txtDtContratacao" value="#{msgs.lbFuncDtContratacao}"/>
-                <h:inputText id="txtDtContratacao" styleClass="inputs" value="#{funcionarioMNG.dtContratacao}" style="display: block;" />
+                <h:inputText id="txtDtContratacao" styleClass="inputs" value="#{funcionarioMNG.dtContratacao}" style="display: block;"><f:convertDateTime pattern = "dd/mm/yyyy" /></h:inputText>
+                             
                 <h:message for="txtDtContratacao" styleClass="error"/>
                 <br/>
                 <h:outputLabel styleClass="labels" for="txtSalario" value="#{msgs.lbFuncSalario}"/>
