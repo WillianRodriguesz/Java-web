@@ -1,4 +1,4 @@
-# <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/main/icons/java.svg" height="30" width="30"> Java Web Projects Repository
+# :coffee: Java Web Projects Repository
 
 Este repositório, denominado `java-web`, contém uma coleção de projetos Java Web desenvolvidos com o propósito de estudo e resolução de problemas. Cada projeto aborda aspectos específicos e utiliza diversas tecnologias e frameworks Java para criar aplicações web robustas e eficientes.
 
